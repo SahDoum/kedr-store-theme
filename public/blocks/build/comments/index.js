@@ -1,1 +1,0 @@
-!function(){"use strict";var e=window.wp.element,n=window.wp.plugins,t=window.wp.data,i=window.wp.post,o=function(){(0,(0,t.useDispatch)(i.store).removeEditorPanel)("discussion-panel")};(0,n.registerPlugin)("kedr-theme-comments",{render:function(){return(0,e.createElement)(o,null)}})}();

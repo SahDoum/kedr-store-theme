@@ -41,7 +41,6 @@ class Kedr_Modules_Snippet {
      */
     public static function load_module() {
         add_action( 'wp_after_insert_post', array( __CLASS__, 'generate_poster' ), 10, 3 );
-        add_action( 'edited_' . Kedr_Modules_Regions::$taxonomy, array( __CLASS__, 'generate_region_poster' ), 10, 3 );
     }
 
     /**
@@ -87,43 +86,6 @@ class Kedr_Modules_Snippet {
     }
 
     /**
-     * Generate region poster on region save
-     */
-    public static function generate_region_poster( $term_id ) {
-        [$basedir, $baseurl] = self::get_upload_paths();
-        if ( ! $basedir ) {
-            return;
-        }
-        $filename = 'region-' . $term_id . uniqid( '-' ) . '.jpg';
-
-        $term = get_term( $term_id, Kedr_Modules_Regions::$taxonomy );
-
-        $options = (array) get_term_meta( $term_id, '_kedr-subcats-options', true );
-        if ( ! empty( $options['attachment'] ) ) {
-            $image = get_attached_file( $options['attachment'] );
-        }
-
-        if ( empty( $image ) ) {
-            $image = get_template_directory_uri() . '/assets/images/region-placeholder.jpg';
-        }
-
-        try {
-            $options = self::generate_options(
-                $basedir . $filename,
-                'Экокарта',
-                $term->name,
-                $image
-            );
-
-            self::include_template( $options, null );
-        } catch ( Exception $error ) {
-            return;
-        }
-
-        update_term_meta( $term_id, self::$meta_image, $baseurl . $filename );
-    }
-
-    /**
      * Get proper template for this post
      */
     public static function include_template( $options, $category ) {
@@ -148,8 +110,6 @@ class Kedr_Modules_Snippet {
             $image = get_template_directory_uri() . '/assets/images/poster-ecomap.jpg';
         } elseif ( is_singular() && ! is_front_page() ) {
             $poster = get_post_meta( get_queried_object_id(), self::$meta_image, true );
-        } elseif ( is_tax( Kedr_Modules_Regions::$taxonomy ) ) {
-            $poster = get_term_meta( get_queried_object_id(), self::$meta_image, true );
         }
 
         if ( ! empty( $poster ) ) {

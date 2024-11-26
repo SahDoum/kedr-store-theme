@@ -2,3 +2,10 @@ vendor/
 .vscode/
 
 composer.lock
+
+wordpress/
+database/
+node_modules/
+plugins/
+uploads/
+.DS_Store

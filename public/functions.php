@@ -118,8 +118,7 @@ endif;
 /**
  * Include theme helpers
  */
-require_once get_template_directory() . '/helpers/coauthors-plus/index.php';
-require_once get_template_directory() . '/helpers/leyka/index.php';
+
 
 /**
  * Include theme core modules
@@ -136,12 +135,9 @@ require_once get_template_directory() . '/modules/menu.php';
 require_once get_template_directory() . '/modules/projects.php';
 require_once get_template_directory() . '/modules/sitemeta.php';
 require_once get_template_directory() . '/modules/search.php';
-require_once get_template_directory() . '/modules/news.php';
 require_once get_template_directory() . '/modules/content.php';
 require_once get_template_directory() . '/modules/embeds.php';
 require_once get_template_directory() . '/modules/loadmore.php';
-require_once get_template_directory() . '/modules/region-about.php';
-require_once get_template_directory() . '/modules/region-taxonomy.php';
 require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
 require_once get_template_directory() . '/modules/subcats.php';
