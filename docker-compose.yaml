@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  wordpress:
+    container_name: wp-store-kedr
+    image: wordpress
+    ports:
+      - "80:80"
+    volumes:
+      - "./public/:/var/www/html/wp-content/themes/kedr"
+      - "./plugins/:/var/www/html/wp-content/plugins"
+      - "./uploads/:/var/www/html/wp-content/uploads"
+      - "./wordpress:/var/www/html"
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: kedr
+      WORDPRESS_DB_USER: kedr
+      WORDPRESS_DB_PASSWORD: kedr
+      WORDPRESS_VERSION: latest
+      WORDPRESS_DEBUG: 1
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: kedr
+      MYSQL_DATABASE: kedr
+      MYSQL_USER: kedr
+      MYSQL_PASSWORD: kedr
+    ports:
+      - 3306
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: kedr
+      PMA_PASSWORD: kedr
+      UPLOAD_LIMIT: 80M
+    ports:
+      - 8881:80
