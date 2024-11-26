@@ -29,6 +29,8 @@ services:
       MYSQL_DATABASE: kedr
       MYSQL_USER: kedr
       MYSQL_PASSWORD: kedr
+    volumes:
+      - "./db_data/:/var/lib/mysql"
     ports:
       - 3306
 
