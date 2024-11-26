@@ -125,7 +125,6 @@ endif;
  */
 require_once get_template_directory() . '/modules/global.php';
 require_once get_template_directory() . '/modules/translit.php';
-require_once get_template_directory() . '/modules/widgets.php';
 require_once get_template_directory() . '/modules/login.php';
 require_once get_template_directory() . '/modules/blocks.php';
 require_once get_template_directory() . '/modules/images.php';
@@ -138,7 +137,7 @@ require_once get_template_directory() . '/modules/search.php';
 require_once get_template_directory() . '/modules/content.php';
 require_once get_template_directory() . '/modules/embeds.php';
 require_once get_template_directory() . '/modules/loadmore.php';
-require_once get_template_directory() . '/modules/snippet.php';
 require_once get_template_directory() . '/modules/requests.php';
 require_once get_template_directory() . '/modules/subcats.php';
 require_once get_template_directory() . '/modules/comments.php';
+require_once get_template_directory() . '/modules/woocommerce.php';

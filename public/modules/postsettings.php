@@ -50,18 +50,6 @@ class Kedr_Modules_Postsettings {
         return $output;
     }
 
-    public static function get_regions() {
-        $args    = array( 'name' => Kedr_Modules_Regions::$taxonomy );
-        $regions = get_terms(
-            array(
-                'taxonomy'   => Kedr_Modules_Regions::$taxonomy,
-                'hide_empty' => false,
-            )
-        );
-
-        return $regions;
-    }
-
     /**
      * Get taxonomy articles
      */

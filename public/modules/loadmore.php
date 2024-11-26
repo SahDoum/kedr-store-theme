@@ -75,14 +75,6 @@ class Kedr_Modules_Loadmore {
             $template = array( 'search', null );
             return self::show_posts( $query, $template, $page );
         }
-        if ( $archive === 'region' ) {
-            if ( $slug === 'all' ) {
-                $slug = null;
-            }
-            $query    = self::get_ecomap_posts( $slug, $page );
-            $template = array( 'triple', array( 'add_region_label' => ! isset( $slug ) ) );
-            return self::show_posts( $query, $template, $page );
-        }
 
         if ( taxonomy_exists( $archive ) ) {
             $query    = self::get_taxonomy_posts( $archive, $slug, $page );
